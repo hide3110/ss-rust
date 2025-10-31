@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Shadowsocks (libev & rust) + simple-obfs 一键卸载脚本 (最终自动化版)
+# Shadowsocks (libev & rust) 一键卸载脚本
 # 适用于 Debian / Ubuntu
 # 使用方法: bash uninstall.sh
 
@@ -102,19 +102,6 @@ for bin in "${RUST_BINS[@]}"; do
     fi
 done
 
-# 删除 simple-obfs 二进制文件
-print_info "删除 simple-obfs 二进制文件..."
-OBFS_BINS=(
-    /usr/bin/obfs-server
-    /usr/bin/obfs-local
-)
-for bin in "${OBFS_BINS[@]}"; do
-    if [ -f "$bin" ]; then
-        rm -f "$bin"
-        print_success "已删除 $bin"
-    fi
-done
-
 echo
 
 # 步骤 4: 删除配置文件和目录
@@ -139,7 +126,6 @@ print_step "步骤 5/5: 清理系统"
 print_info "清理临时文件..."
 TEMP_FILES=(
     /tmp/shadowsocks-rust.tar.xz
-    /tmp/simple-obfs.tar.gz
 )
 for file in "${TEMP_FILES[@]}"; do
     if [ -f "$file" ]; then
@@ -165,7 +151,7 @@ echo
 # 最终检查
 print_info "最终检查残留..."
 RESIDUAL=false
-COMMANDS_TO_CHECK=("ss-server" "ssserver" "obfs-server" "sslocal")
+COMMANDS_TO_CHECK=("ss-server" "ssserver" "sslocal")
 
 for cmd in "${COMMANDS_TO_CHECK[@]}"; do
     if command -v $cmd >/dev/null 2>&1; then
