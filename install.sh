@@ -142,6 +142,18 @@ EOF
 print_info "创建 shadowsocks-rust 配置..."
 cat > /etc/shadowsocks-rust/config.json <<EOF
 {
+  "servers": [
+    {
+    "server": "0.0.0.0",
+    "server_port": $RUST_PORT,
+    "password": "$PASSWORD",
+    "timeout": 300,
+    "method": "aes-128-gcm",
+    "fast_open": true,
+    "nameserver": "8.8.8.8",
+    "mode": "tcp_and_udp"
+    },
+    {
     "server": "::",
     "server_port": $RUST_PORT,
     "password": "$PASSWORD",
@@ -150,6 +162,8 @@ cat > /etc/shadowsocks-rust/config.json <<EOF
     "fast_open": true,
     "nameserver": "8.8.8.8",
     "mode": "tcp_and_udp"
+    }
+  ]
 }
 EOF
 
