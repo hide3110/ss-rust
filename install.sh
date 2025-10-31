@@ -149,7 +149,7 @@ cat > /etc/shadowsocks-rust/config.json <<EOF
     "password": "$PASSWORD",
     "timeout": 300,
     "method": "aes-128-gcm",
-    "fast_open": true,
+    "fast_open": false,
     "nameserver": "8.8.8.8",
     "mode": "tcp_and_udp"
     },
@@ -159,7 +159,7 @@ cat > /etc/shadowsocks-rust/config.json <<EOF
     "password": "$PASSWORD",
     "timeout": 300,
     "method": "aes-128-gcm",
-    "fast_open": true,
+    "fast_open": false,
     "nameserver": "8.8.8.8",
     "mode": "tcp_and_udp"
     }
