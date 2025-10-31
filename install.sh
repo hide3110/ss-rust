@@ -142,7 +142,7 @@ EOF
 print_info "创建 shadowsocks-rust 配置..."
 cat > /etc/shadowsocks-rust/config.json <<EOF
 {
-    "server": "[::]",
+    "server": "::",
     "server_port": $RUST_PORT,
     "password": "$PASSWORD",
     "timeout": 300,
